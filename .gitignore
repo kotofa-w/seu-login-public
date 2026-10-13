@@ -1,0 +1,14 @@
+__pycache__/
+.venv/
+.ruff_cache/
+.pytest_cache/
+_test_config/
+*.py[cod]
+*.log
+*.log.*
+*.ini
+!seu_login.example.ini
+seu_config.json
+.env
+.env.*
+!.env.example

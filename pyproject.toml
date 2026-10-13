@@ -1,0 +1,26 @@
+[project]
+name = "seu-login"
+version = "1.1.0"
+description = "SEU campus network auto-login tool"
+requires-python = ">=3.10"
+dependencies = ["requests>=2.28"]
+
+[tool.ruff]
+line-length = 79
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "C901", "S", "B", "A", "UP", "RUF"]
+ignore = [
+    "RUF001",  # ambiguous unicode in string (Chinese punctuation)
+    "RUF002",  # ambiguous unicode in docstring
+    "RUF003",  # ambiguous unicode in comment
+    "S110",    # try-except-pass (intentional for GUI robustness)
+    "S112",    # try-except-continue (intentional for theme fallback)
+    "S602",    # subprocess shell=True (required for schtasks)
+    "S606",    # os.startfile (Windows-specific, intentional)
+    "S607",    # partial executable path (Windows PATH resolution)
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
