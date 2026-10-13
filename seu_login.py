@@ -902,7 +902,7 @@ def install_auto_start() -> int:
     """Install auto-start via Windows Task Scheduler.
 
     Uses pythonw.exe for windowless execution with a
-    30-second post-login delay.
+    15-second post-login delay.
 
     Returns:
         Exit status code.
@@ -922,7 +922,7 @@ def install_auto_start() -> int:
         f'/TN "{TASK_NAME}" '
         f'/TR "\\"{pythonw}\\" \\"{script_path}\\"" '
         f"/SC ONLOGON "
-        f"/DELAY 0000:30 "
+        f"/DELAY 0000:15 "
         f"/RL HIGHEST "
         f"/F"
     )
@@ -941,7 +941,7 @@ def install_auto_start() -> int:
             print(f"[OK] Auto-start installed ({TASK_NAME})")
             print(f"     Executable: {pythonw}")
             print(f"     Script: {script_path}")
-            print("     Trigger: ONLOGON + 30s delay")
+            print("     Trigger: ONLOGON + 15s delay")
             logger.info("Auto-start installed")
             return OK
 

@@ -47,7 +47,7 @@ $eventTrigger = New-CimInstance -CimClass $eventTriggerClass -ClientOnly -Proper
     Delay = 'PT5S'
 }
 $logonTrigger = New-ScheduledTaskTrigger -AtLogOn -User ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name)
-$logonTrigger.Delay = 'PT30S'
+$logonTrigger.Delay = 'PT15S'
 $principal = New-ScheduledTaskPrincipal -UserId ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Highest
 $settings = New-ScheduledTaskSettingsSet -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Minutes 5) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger @($eventTrigger, $logonTrigger) -Principal $principal -Settings $settings -Description 'Authenticate SEU WLAN/ISP after a Wi-Fi connection event; no periodic polling.' -ErrorAction Stop | Out-Null
